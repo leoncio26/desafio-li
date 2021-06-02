@@ -34,3 +34,9 @@ form{
   background-color: white;
   padding: 10px;
 }
+
+.btn{
+  position: relative;
+  width: 200px;
+  margin-top: 8px;
+}

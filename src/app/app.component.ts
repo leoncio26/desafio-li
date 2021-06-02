@@ -57,6 +57,7 @@ export class AppComponent {
         quantidade: form.quantidade,
         valorUnitario: form.valorUnitario
       }
+      this.isEditing = false;
     }else{
       this.produtosSalvos.push({
         id: this.produtoId++,

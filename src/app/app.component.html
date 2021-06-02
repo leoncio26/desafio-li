@@ -1,29 +1,31 @@
 <div class="container">
   <div class="cadastro">
-    <h3 class="uppercase">Cadastrar produto</h3>
+    <h3 *ngIf="!isEditing" class="uppercase">Cadastrar produto</h3>
+    <h3 *ngIf="isEditing" class="uppercase">Editar produto</h3>
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
       <label>
-        Nome do produto<input formControlName="nome" type="text">
+        <div>Nome do produto</div><input formControlName="nome" type="text">
       </label>
       <label>
-        Fabricante produto
+        <div>Fabricante produto</div>
         <select formControlName="fabricante" (change)="mudarCategoria(fabricanteId.value)" #fabricanteId>
           <option *ngFor="let fabricante of fabricantes" value={{fabricante.id}}>{{fabricante.nome}}</option>
         </select>
       </label>
       <label>
-        Categoria Produto
+        <div>Categoria Produto</div>
         <select formControlName="categoria">
           <option *ngFor="let categoria of categoriasFabricante" value={{categoria.id}}>{{categoria.nome}}</option>
         </select>
       </label>
       <label>
-        Quantidade<input formControlName="quantidade" type="text">
+        <div>Quantidade</div><input formControlName="quantidade" type="text">
       </label>
       <label>
-        Valor unidade<input formControlName="valorUnitario" type="text">
+        <div>Valor unidade</div><input formControlName="valorUnitario" type="text">
       </label>
-      <button type="submit">Adicionar Produto</button>
+      <button *ngIf="!isEditing" type="submit" class="btn">Adicionar Produto</button>
+      <button *ngIf="isEditing" type="submit" class="btn">Editar Produto</button>
     </form>
   </div>
   <div class="produtos-cadastrados">

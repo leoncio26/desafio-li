@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="cadastro">
+    <h3 class="uppercase">Cadastrar produto</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <label>
+        Nome do produto<input formControlName="nome" type="text">
+      </label>
+      <label>
+        Fabricante produto
+        <select formControlName="fabricante" (change)="mudarCategoria(fabricanteId.value)" #fabricanteId>
+          <option *ngFor="let fabricante of fabricantes" value={{fabricante.id}}>{{fabricante.nome}}</option>
+        </select>
+      </label>
+      <label>
+        Categoria Produto
+        <select formControlName="categoria">
+          <option *ngFor="let categoria of categoriasFabricante" value={{categoria.id}}>{{categoria.nome}}</option>
+        </select>
+      </label>
+      <label>
+        Quantidade<input formControlName="quantidade" type="text">
+      </label>
+      <label>
+        Valor unidade<input formControlName="valorUnitario" type="text">
+      </label>
+      <button type="submit">Adicionar Produto</button>
+    </form>
+  </div>
+  <div class="produtos-cadastrados">
+    <h3 class="uppercase">Produtos cadastrados</h3>
+    <div class="filtro">
+      <form [formGroup]="formFilter" (ngSubmit)="filtrar(formFilter.value)">
+        <label>
+          Buscar produto<input formControlName="filtro" type="text">
+          <button type="submit">Buscar</button>
+        </label>
+      </form>
+    </div>
+    <table>
+      <tr *ngFor="let produto of produtos">
+        <td>{{produto.nome}}</td>
+        <td>{{produto.fabricante.nome}}</td>
+        <td>{{produto.categoria.nome}}</td>
+        <td>{{produto.quantidade}}</td>
+        <td>{{produto.valorUnitario}}</td>
+        <button (click)="editarProduto(produto)">Editar</button>
+        <button (click)="deletarProduto(produto.id)">Deletar</button>
+      </tr>
+      <tr *ngIf="produtos.length > 0">
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td>{{quantidadeTotal}}</td>
+        <td>{{total}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- <div class="modal-container" *ngIf="showModal">
+  <div class="modal">
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <label>
+        Nome do produto<input formControlName="nome" type="text">
+      </label>
+      <label>
+        Fabricante produto
+        <select formControlName="fabricante" (change)="mudarCategoria(fabricanteId.value)" #fabricanteId>
+          <option *ngFor="let fabricante of fabricantes" value={{fabricante.id}} [selected]="fabricante.id == produtoSelecionado.fabricante.id">{{fabricante.nome}}</option>
+        </select>
+      </label>
+      <label>
+        Categoria Produto
+        <select formControlName="categoria">
+          <option *ngFor="let categoria of categoriasFabricante" value={{categoria.id}} [selected]="categoria.id == produtoSelecionado.categoria.id">{{categoria.nome}}</option>
+        </select>
+      </label>
+      <label>
+        Quantidade<input formControlName="quantidade" type="text">
+      </label>
+      <label>
+        Valor unidade<input formControlName="valorUnitario" type="text">
+      </label>
+      <button type="submit">Editar Produto</button>
+    </form>
+  </div>
+</div> -->

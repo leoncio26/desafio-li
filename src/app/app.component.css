@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+}
+
+.cadastro, .produtos-cadastrados{
+  position: relative;
+  width: 50%;
+  margin-right: 150px;
+}
+
+.uppercase, label {
+  text-transform: uppercase;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-container{
+  position: absolute;
+  top: 0;
+  background-color: rgba(241, 241, 241, 0.555);
+  width: 100%;
+  height: 100%;
+}
+
+.modal{
+  position: relative;
+  width: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px;
+}
